@@ -1,5 +1,6 @@
 package com.ucne.apitest
 
+import GamesScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -11,7 +12,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.ucne.apitest.presentation.games.GamesScreen
 import com.ucne.apitest.ui.theme.APITestTheme
 import dagger.hilt.android.AndroidEntryPoint
 
