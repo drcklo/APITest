@@ -78,8 +78,9 @@ fun GamesScreen(
                     .padding(16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = "ID", modifier = Modifier.weight(0.5f))
-                Text(text = "Título", modifier = Modifier.weight(1f))
+                Text(text = "ID", modifier = Modifier.weight(0.3f))
+                Text(text = "Título", modifier = Modifier.weight(0.7f))
+                Text(text = "Publisher", modifier = Modifier.weight(1f))
             }
 
             HorizontalDivider()
@@ -90,15 +91,16 @@ fun GamesScreen(
                 Text(text = uiState.errorMessage!!, color = Color.Red, modifier = Modifier.fillMaxWidth())
             } else {
                 LazyColumn(modifier = Modifier.fillMaxSize()) {
-                    items(uiState.games) { game ->
+                    items(uiState.games.sortedBy { it.id }) { game ->
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .clickable { /* Handle game click */ }
+                                .clickable { /* TODO*/ }
                                 .padding(vertical = 8.dp)
                         ) {
-                            Text(text = game.id.toString(), modifier = Modifier.weight(0.5f))
-                            Text(text = game.title, modifier = Modifier.weight(1f))
+                            Text(text = game.id.toString(), modifier = Modifier.weight(0.3f))
+                            Text(text = game.title, modifier = Modifier.weight(0.7f))
+                            Text(text = game.publisher, modifier = Modifier.weight(1f))
                         }
                     }
                 }
