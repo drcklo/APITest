@@ -22,10 +22,10 @@ fun InformacionDetallada(game: GamesDTO, onDismiss: () -> Unit) {
         Text(text = game.title)
     }, text = {
         Column {
-            Text(text = game.short_description)
+            Text(text = game.shortDescription)
             Spacer(modifier = Modifier.height(8.dp))
             Text(text = "Más información", color = Color.Blue, modifier = Modifier.clickable {
-                uriHandler.openUri(game.game_url)
+                uriHandler.openUri(game.gameUrl)
             })
         }
     }, confirmButton = {
