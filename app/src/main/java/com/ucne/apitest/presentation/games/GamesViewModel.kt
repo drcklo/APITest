@@ -7,6 +7,9 @@ import com.ucne.apitest.data.repository.GamesRepository
 import com.ucne.apitest.data.repository.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,47 +19,38 @@ class GamesViewModel @Inject constructor(
     private val gamesRepository: GamesRepository
 ) : ViewModel() {
 
-    var uiState = MutableStateFlow(GamesUIState())
-        private set
-
-    init {
-        viewModelScope.launch {
-        }
-    }
-
+    private val _uiState = MutableStateFlow(GamesUIState())
+    val uiState = _uiState.asStateFlow()
     fun getGames() {
-        viewModelScope.launch {
-            gamesRepository.getGames().collect() { result ->
-                when (result) {
-                    is Resource.Loading -> {
-                        uiState.update {
-                            it.copy(isLoading = true)
-                        }
-
+        gamesRepository.getGames().onEach() { result ->
+            when (result) {
+                is Resource.Loading -> {
+                    _uiState.update {
+                        it.copy(isLoading = true)
                     }
 
-                    is Resource.Success -> {
-                        uiState.update {
-                            it.copy(
-                                isLoading = false,
-                                games = result.data ?: emptyList()
-                            )
-                        }
-                    }
+                }
 
-                    is Resource.Error -> {
-                        uiState.update {
-                            it.copy(
-                                isLoading = false,
-                                errorMessage = result.message
-                            )
-                        }
+                is Resource.Success -> {
+                    _uiState.update {
+                        it.copy(
+                            isLoading = false,
+                            games = result.data ?: emptyList()
+                        )
+                    }
+                }
+
+                is Resource.Error -> {
+                    _uiState.update {
+                        it.copy(
+                            isLoading = false,
+                            errorMessage = result.message
+                        )
                     }
                 }
             }
-        }
+        }.launchIn(viewModelScope)
     }
-
 }
 
 data class GamesUIState(
