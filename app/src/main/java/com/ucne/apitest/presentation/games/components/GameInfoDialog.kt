@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.ucne.apitest.data.remote.dto.GamesDto
 
 @Composable
-fun InformacionDetallada(game: GamesDto, onDismiss: () -> Unit) {
+fun GameInfoDialog(game: GamesDto, onDismiss: () -> Unit) {
     val uriHandler = LocalUriHandler.current
 
     AlertDialog(onDismissRequest = onDismiss, title = {
