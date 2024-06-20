@@ -1,5 +1,6 @@
 package com.ucne.apitest.data.repository
 
+import android.util.Log
 import com.ucne.apitest.data.remote.GamesApi
 import com.ucne.apitest.data.remote.dto.GamesDto
 import kotlinx.coroutines.flow.Flow
@@ -15,6 +16,7 @@ class GamesRepository @Inject constructor(
             val games = gamesApi.getGames()
             emit(Resource.Success(games))
         } catch (e: Exception) {
+            Log.e("GamesRepository","getGames: ${e.message}")
             emit(Resource.Error(e.localizedMessage ?: "An unexpected error occured"))
         }
     }
