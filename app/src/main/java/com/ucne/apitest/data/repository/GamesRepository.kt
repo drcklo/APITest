@@ -9,7 +9,7 @@ import javax.inject.Inject
 class GamesRepository @Inject constructor(
     private val gamesApi: GamesApi
 ) {
-    suspend fun getGames(): Flow<Resource<List<GamesDto>>> = flow {
+    fun getGames(): Flow<Resource<List<GamesDto>>> = flow {
         emit(Resource.Loading())
         try {
             val games = gamesApi.getGames()
