@@ -2,7 +2,7 @@ package com.ucne.apitest.data.remote.dto
 
 import com.squareup.moshi.Json
 
-data class GamesDTO(
+data class GamesDto(
     val id: Int,
     val title: String,
     val publisher: String,

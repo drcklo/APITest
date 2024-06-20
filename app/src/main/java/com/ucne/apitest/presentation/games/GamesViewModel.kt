@@ -2,7 +2,7 @@ package com.ucne.apitest.presentation.games
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ucne.apitest.data.remote.dto.GamesDTO
+import com.ucne.apitest.data.remote.dto.GamesDto
 import com.ucne.apitest.data.repository.GamesRepository
 import com.ucne.apitest.data.repository.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -60,7 +60,7 @@ class GamesViewModel @Inject constructor(
 }
 
 data class GamesUIState(
-    val games: List<GamesDTO> = emptyList(),
+    val games: List<GamesDto> = emptyList(),
     val isLoading: Boolean = false,
     val errorMessage: String? = null
 )

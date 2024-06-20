@@ -28,7 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.ucne.apitest.data.remote.dto.GamesDTO
+import com.ucne.apitest.data.remote.dto.GamesDto
 import com.ucne.apitest.presentation.games.GamesViewModel
 import com.ucne.apitest.presentation.games.components.InformacionDetallada
 
@@ -41,7 +41,7 @@ fun GamesScreen(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     var isInitialLoad by remember { mutableStateOf(true) }
     var showDialog by remember { mutableStateOf(false) }
-    var selectedGame by remember { mutableStateOf<GamesDTO?>(null) }
+    var selectedGame by remember { mutableStateOf<GamesDto?>(null) }
 
     Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
         TopAppBar(title = {

@@ -1,15 +1,15 @@
 package com.ucne.apitest.data.repository
 
-import com.ucne.apitest.data.remote.GamesAPI
-import com.ucne.apitest.data.remote.dto.GamesDTO
+import com.ucne.apitest.data.remote.GamesApi
+import com.ucne.apitest.data.remote.dto.GamesDto
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class GamesRepository @Inject constructor(
-    private val gamesApi: GamesAPI
+    private val gamesApi: GamesApi
 ) {
-    suspend fun getGames(): Flow<Resource<List<GamesDTO>>> = flow {
+    suspend fun getGames(): Flow<Resource<List<GamesDto>>> = flow {
         emit(Resource.Loading())
         try {
             val games = gamesApi.getGames()

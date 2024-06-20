@@ -2,7 +2,7 @@ package com.ucne.apitest.di
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import com.ucne.apitest.data.remote.GamesAPI
+import com.ucne.apitest.data.remote.GamesApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,11 +25,11 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providesGames(moshi: Moshi): GamesAPI {
+    fun providesGames(moshi: Moshi): GamesApi {
         return Retrofit.Builder()
             .baseUrl("https://www.freetogame.com/api/")
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
-            .create(GamesAPI::class.java)
+            .create(GamesApi::class.java)
     }
 }
