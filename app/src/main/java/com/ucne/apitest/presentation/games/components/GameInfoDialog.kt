@@ -12,10 +12,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
-import com.ucne.apitest.data.remote.dto.GamesDto
+import com.ucne.apitest.data.remote.dto.GameDto
 
 @Composable
-fun GameInfoDialog(game: GamesDto, onDismiss: () -> Unit) {
+fun GameInfoDialog(game: GameDto, onDismiss: () -> Unit) {
     val uriHandler = LocalUriHandler.current
 
     AlertDialog(onDismissRequest = onDismiss, title = {

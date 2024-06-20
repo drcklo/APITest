@@ -8,12 +8,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.ucne.apitest.data.remote.dto.GamesDto
+import com.ucne.apitest.data.remote.dto.GameDto
 
 @Composable
 fun GameItem(
-    game: GamesDto,
-    onClick: (GamesDto) -> Unit
+    game: GameDto,
+    onClick: (GameDto) -> Unit
 ) {
     Row(
         modifier = Modifier

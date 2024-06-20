@@ -31,22 +31,22 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.ucne.apitest.data.remote.dto.GamesDto
-import com.ucne.apitest.presentation.games.GamesUIState
-import com.ucne.apitest.presentation.games.GamesViewModel
+import com.ucne.apitest.data.remote.dto.GameDto
+import com.ucne.apitest.presentation.games.GameUiState
+import com.ucne.apitest.presentation.games.GameViewModel
 import com.ucne.apitest.presentation.games.components.GameInfoDialog
 import com.ucne.apitest.presentation.games.components.GameItem
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun GamesScreen(
-    viewModel: GamesViewModel = hiltViewModel()
+fun GameScreen(
+    viewModel: GameViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     var isInitialLoad by remember { mutableStateOf(true) }
     var showDialog by remember { mutableStateOf(false) }
-    var selectedGame by remember { mutableStateOf<GamesDto?>(null) }
+    var selectedGame by remember { mutableStateOf<GameDto?>(null) }
 
     GamesScreenBody(
         uiState = uiState,
@@ -74,10 +74,10 @@ fun GamesScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GamesScreenBody(
-    uiState: GamesUIState,
+    uiState: GameUiState,
     isInitialLoad: Boolean,
     onFabClick: () -> Unit,
-    onGameClick: (GamesDto) -> Unit
+    onGameClick: (GameDto) -> Unit
 ) {
     Scaffold(
         topBar = {
@@ -144,74 +144,74 @@ fun GamesScreenBody(
 @Preview(showBackground = true)
 @Composable
 fun GamesScreenBodyPreview() {
-    val UiState = GamesUIState(
+    val UiState = GameUiState(
         isLoading = false,
         errorMessage = null,
         games = listOf(
-            GamesDto(
+            GameDto(
                 id = 1,
                 title = "Game 1",
                 publisher = "Publisher 1",
                 shortDescription = "Short description 1",
                 gameUrl = "https://www.google.com"
             ),
-            GamesDto(
+            GameDto(
                 id = 2,
                 title = "Game 2",
                 publisher = "Publisher 2",
                 shortDescription = "Short description 2",
                 gameUrl = "https://www.google.com"
             ),
-            GamesDto(
+            GameDto(
                 id = 3,
                 title = "Game 3",
                 publisher = "Publisher 3",
                 shortDescription = "Short description 3",
                 gameUrl = "https://www.google.com"
             ),
-            GamesDto(
+            GameDto(
                 id = 4,
                 title = "Game 4",
                 publisher = "Publisher 4",
                 shortDescription = "Short description 4",
                 gameUrl = "https://www.google.com"
             ),
-            GamesDto(
+            GameDto(
                 id = 5,
                 title = "Game 5",
                 publisher = "Publisher 5",
                 shortDescription = "Short description 5",
                 gameUrl = "https://www.google.com"
             ),
-            GamesDto(
+            GameDto(
                 id = 6,
                 title = "Game 6",
                 publisher = "Publisher 6",
                 shortDescription = "Short description 6",
                 gameUrl = "https://www.google.com"
             ),
-            GamesDto(
+            GameDto(
                 id = 7,
                 title = "Game 7",
                 publisher = "Publisher 7",
                 shortDescription = "Short description 7",
                 gameUrl = "https://www.google.com"
             ),
-            GamesDto(
+            GameDto(
                 id = 8,
                 title = "Game 8",
                 publisher = "Publisher 8",
                 shortDescription = "Short description 8",
                 gameUrl = "https://www.google.com"
             ),
-            GamesDto(
+            GameDto(
                 id = 9,
                 title = "Game 9",
                 publisher = "Publisher 9",
                 shortDescription = "Short description 9",
                 gameUrl = "https://www.google.com"
             ),
-            GamesDto(
+            GameDto(
                 id = 10,
                 title = "Game 10",
                 publisher = "Publisher 10",
